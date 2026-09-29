@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+body {
+  font-family: "STKaiti", "KaiTi", "STSong", "SimSun", "Songti SC", serif;
+  color: #d8c9a3;
+}
+
+#scene {
+  position: fixed;
+  inset: 0;
+  display: block;
+}
+
+/* ---------- 仕女热区 ---------- */
+#hotspots {
+  position: fixed;
+  display: none;
+  cursor: crosshair;
+  z-index: 5;
+}
+
+#hotspots.on {
+  display: block;
+}
+
+.hotspot {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  cursor: crosshair;
+}
+
+.hotspot::after {
+  content: "";
+  position: absolute;
+  inset: 6% 12%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(216, 201, 163, 0.10) 0%, transparent 65%);
+  animation: breathe 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.35; transform: scale(0.94); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+/* ---------- 讲解 tooltip ---------- */
+#tooltip {
+  position: fixed;
+  z-index: 10;
+  max-width: 264px;
+  padding: 14px 18px;
+  background: rgba(12, 8, 4, 0.82);
+  border-left: 2px solid #b3965a;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+  font-size: 0.92rem;
+  line-height: 1.9;
+  color: #e6d9b8;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s, transform 0.35s;
+  pointer-events: none;
+}
+
+#tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#tooltip strong {
+  display: block;
+  font-size: 1.05rem;
+  letter-spacing: 4px;
+  color: #cbb271;
+  margin-bottom: 4px;
+}
+
+/* ---------- 底部提示 ---------- */
+#hint {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 5.5%;
+  z-index: 6;
+  text-align: center;
+  font-size: 0.95rem;
+  letter-spacing: 8px;
+  color: rgba(216, 201, 163, 0.75);
+  text-shadow: 0 0 14px rgba(0, 0, 0, 0.9);
+  animation: hintBreathe 4s ease-in-out infinite;
+  transition: opacity 1.6s;
+  pointer-events: none;
+}
+
+#hint.gone {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes hintBreathe {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.95; }
+}
+
+/* ---------- 收尾 ---------- */
+#finale {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8vw;
+  background: rgba(0, 0, 0, 0.38);
+  opacity: 0;
+  transition: opacity 3s;
+  pointer-events: none;
+}
+
+#finale.show {
+  opacity: 1;
+}
+
+#finale-text {
+  max-width: 620px;
+  font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+  line-height: 2.4;
+  letter-spacing: 3px;
+  text-align: center;
+  color: #ecdfc0;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9);
+}

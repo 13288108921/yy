@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>簪花仕女图 · 粒子交互长卷</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <!-- 六个仕女热区，位置由 app.js 按画作比例生成 -->
+  <div id="hotspots" aria-hidden="true"></div>
+
+  <!-- 悬停讲解 -->
+  <div id="tooltip" role="tooltip"></div>
+
+  <!-- 底部提示 -->
+  <div id="hint">触碰时光，唤醒大唐的下午</div>
+
+  <!-- 收尾文字 -->
+  <div id="finale">
+    <p id="finale-text"></p>
+  </div>
+
+  <script src="three.min.js"></script>
+  <script src="painting-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
